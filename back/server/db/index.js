@@ -33,4 +33,15 @@ usersdb.one = (id) => {
     })
 }
 
+usersdb.insert = (email, password, name) => {
+    return new Promise((resolve, reject) => {
+        pool.query('INSERT INTO users (email, password, name) VALUES (?, ?, ?)', [email, password, name], (err, results) => {
+            if (err) {
+                return reject(err)
+            }
+            return resolve(results)
+        })
+    })
+}
+
 module.exports = usersdb;

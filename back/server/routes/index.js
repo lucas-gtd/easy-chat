@@ -25,4 +25,15 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
+router.post('/create', async (req, res, next) => {
+    try {
+        db.insert(req.body.email, req.body.password, req.body.name).then((results) => {
+            res.json(results)
+        })
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500)
+    }
+})
+
 module.exports = router
