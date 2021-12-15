@@ -1,1 +1,10 @@
-<p>chat works!</p>
+<div *ngFor="let chat of convo.chats">
+    <div *ngIf="chat.sender.name === currentUser.name" style="color: red;display: flex;">
+        <p style="margin-right: 20px;"> {{chat.sender.name}} : </p>
+        <p> {{chat.content}} </p>
+    </div>
+    <div *ngIf="chat.sender.name !== currentUser.name" style="color: blue;display: flex;">
+        <p style="margin-right: 20px;"> {{chat.sender.name}} : </p>
+        <p> {{chat.content}} </p>
+    </div>
+</div>

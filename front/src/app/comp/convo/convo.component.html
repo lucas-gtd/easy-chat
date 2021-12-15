@@ -1,7 +1,22 @@
-<div class="col-sm-4 m-auto">
-    <h1 class="display-6 m-5">Conversations</h1>
-    <div class="list-group">
-        <button *ngFor="let user of users" type="button" class="list-group-item list-group-item-action"> {{user}}
-        </button>
+<div class="row m-5">
+    <h1 class="col-sm-4 m-auto display-6">Conversations</h1>
+    <h1 class="col-sm-4 m-auto display-6">Chat</h1>
+</div>
+<div class="row">
+    <div class="col-sm-4 m-auto">
+        <div class="list-group">
+            <button *ngFor="let userConv of users" (click)="openChat(userConv)" type="button"
+                class="list-group-item list-group-item-action">
+                <p *ngFor="let user of userConv"> {{user.name}} </p>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="showChat == true" class="col-sm-4 m-auto">
+        <app-chat [convo]="convo"></app-chat>
+    </div>
+    <div *ngIf="showChat == false" class="col-sm-4 m-auto">
+        <p class="lead">
+            No chat selected
+        </p>
     </div>
 </div>
