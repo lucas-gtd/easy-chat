@@ -30,17 +30,14 @@ export class ConvoComponent implements OnInit {
 
   // initialise convo object on conversation click
   openChat(users: User[]) {
-    // show the component
-    this.showChat = true;
     // init the convo object
     this.convo = new Convo(users, [
-      new Chat(
-        new User('lae20100@gmail;com', '123', 'Laetitia'),
-        'salut boT, ca va bien ?'
-      ),
+      new Chat(users[0], 'salut boT, ca va bien ?'),
       new Chat(this.userService.currentUser, 'oui ca va bien et toi ?'),
-      new Chat(new User('lae20100@gmail;com', '123', 'Laetitia'), 'ça va'),
+      new Chat(users[0], 'ça va'),
     ]);
+    // show the component
+    this.showChat = true;
   }
 
   ngOnInit(): void {}

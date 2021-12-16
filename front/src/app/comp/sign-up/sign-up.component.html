@@ -1,17 +1,18 @@
 <div class="col-sm-4 m-auto">
     <h1 class="display-6 m-5">Sign up</h1>
+    <p class="text-danger"> {{errorMsg}} </p>
     <form (ngSubmit)="onSubmit()" #form="ngForm">
         <div class="mb-3">
             <label for="inputMail" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="inputMail" />
+            <input type="email" class="form-control" id="inputMail" [(ngModel)]="email" name="inputEmail" />
         </div>
         <div class="mb-3">
             <label for="inputPass" class="form-label">Password</label>
-            <input type="password" class="form-control" id="inputPass" />
+            <input type="password" class="form-control" id="inputPass" [(ngModel)]="password" name="inputPassword" />
         </div>
         <div class="mb-4">
             <label for="inputName" class="form-label">Username</label>
-            <input type="text" class="form-control" id="inputName" />
+            <input type="text" class="form-control" id="inputName" [(ngModel)]="name" name="inputUsername" />
         </div>
         <button type="submit" class="btn btn-outline-primary w-100">Sign up</button>
     </form>

@@ -1,9 +1,14 @@
 const express = require('express')
 const routes = require('./routes')
+const cors = require('cors')
 
 const app = express()
 
 app.use(express.json())
+
+app.use(cors({
+    origin: 'http://localhost:4200'
+}));
 
 app.use('/api/users', routes)
 

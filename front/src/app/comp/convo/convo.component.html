@@ -6,8 +6,8 @@
     <div class="col-sm-4 m-auto">
         <div class="list-group">
             <button *ngFor="let userConv of users" (click)="openChat(userConv)" type="button"
-                class="list-group-item list-group-item-action">
-                <p *ngFor="let user of userConv"> {{user.name}} </p>
+                class="list-group-item list-group-item-action" style="display: flex;">
+                <p *ngFor="let user of userConv"> {{user.name}} - </p>
             </button>
         </div>
     </div>

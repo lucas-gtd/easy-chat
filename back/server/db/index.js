@@ -33,14 +33,32 @@ usersdb.one = (id) => {
     })
 }
 
-usersdb.insert = (email, password, name) => {
+usersdb.oneByMail = (email) => {
     return new Promise((resolve, reject) => {
-        pool.query('INSERT INTO users (email, password, name) VALUES (?, ?, ?)', [email, password, name], (err, results) => {
+        pool.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
             if (err) {
                 return reject(err)
             }
-            return resolve(results)
+            return resolve(results[0])
         })
+    })
+}
+
+usersdb.insert = (email, password, name) => {
+    return new Promise((resolve, reject) => {
+        pool.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
+            if (results.length > 0) {
+                return resolve({ emailError: "user with this email already exist" })
+            } else {
+                pool.query('INSERT INTO users (email, password, name) VALUES (?, ?, ?)', [email, password, name], (err, rows) => {
+                    if (err) {
+                        return reject(err)
+                    }
+                    return resolve({ validMsg: "user successfuly inserted !", user: { email: email, password: password, name: name } })
+                })
+            }
+        })
+
     })
 }
 

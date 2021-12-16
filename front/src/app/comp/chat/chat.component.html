@@ -7,4 +7,9 @@
         <p style="margin-right: 20px;"> {{chat.sender.name}} : </p>
         <p> {{chat.content}} </p>
     </div>
+
 </div>
+<form (ngSubmit)="sendMessage()" #form="ngForm">
+    <input type="text" [(ngModel)]="inputMessage" name="inPutMsg" />
+    <button> send </button>
+</form>
