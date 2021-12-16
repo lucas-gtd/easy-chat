@@ -18,7 +18,18 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  connectUser(email: string, password: string) {}
+  connectUser(email: string, password: string): Observable<any> {
+    return this.http
+      .post(
+        'http://localhost:8080/api/users/login',
+        {
+          email: email,
+          password: password,
+        },
+        this.optionRequete
+      )
+      .pipe();
+  }
 
   createNewUser(
     email: string,

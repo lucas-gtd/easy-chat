@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Chat } from 'src/app/models/chat';
 import { Convo } from 'src/app/models/convo';
 import { User } from 'src/app/models/user';
+import { ConvoService } from 'src/app/services/convo.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -26,7 +27,10 @@ export class ConvoComponent implements OnInit {
   // conversation object to send in the chat compoenent
   convo: Convo;
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private convoService: ConvoService
+  ) {}
 
   // initialise convo object on conversation click
   openChat(users: User[]) {
@@ -40,5 +44,9 @@ export class ConvoComponent implements OnInit {
     this.showChat = true;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.convo.users = this.convoService.initConvoUsersInfos(
+      this.userService.currentUser
+    );
+  }
 }
