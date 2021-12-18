@@ -11,7 +11,7 @@ import { SignUpComponent } from './comp/sign-up/sign-up.component';
 import { SignInComponent } from './comp/sign-in/sign-in.component';
 import { ConvoComponent } from './comp/convo/convo.component';
 
-const config: SocketIoConfig = { url: 'http://192.168.1.30:4444', options: {} };
+const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 
 @NgModule({
   declarations: [
