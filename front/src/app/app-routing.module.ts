@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
-import { ChatComponent } from './comp/chat/chat.component';
 import { ConvoComponent } from './comp/convo/convo.component';
 import { SignInComponent } from './comp/sign-in/sign-in.component';
 import { SignUpComponent } from './comp/sign-up/sign-up.component';

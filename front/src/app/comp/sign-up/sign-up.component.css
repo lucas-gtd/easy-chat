@@ -1,0 +1,75 @@
+.signupTitle {
+  width: 100%;
+  text-align: center;
+  font-family: "Roboto";
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  color: #262626;
+  animation: 1s slidein;
+}
+.signupError {
+  width: 100%;
+  text-align: center;
+  font-family: "Roboto";
+  color: red;
+}
+@keyframes slidein {
+  from {
+    transform: rotateY(90deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+.signupForm {
+  margin: auto;
+  width: 25vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.signupInputGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.signupInputLabel {
+  font-family: "Roboto";
+  color: #262626;
+}
+.signupInput {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #262626;
+  height: 2.5rem;
+  font-family: "Roboto";
+  text-align: center;
+  border-radius: 1rem;
+}
+.signupButton {
+  border: none;
+  height: 2.5rem;
+  border-radius: 1rem;
+  background-color: #262626;
+  color: rgb(240, 240, 240);
+}
+.signupQuestion {
+  font-family: "Roboto";
+  color: #262626;
+}
+@media screen and (max-width: 1024px) {
+  .signupForm {
+    width: 33vw;
+  }
+}
+@media screen and (max-width: 768px) {
+  .signupForm {
+    width: 50vw;
+  }
+}
+@media screen and (max-width: 425px) {
+  .signupForm {
+    width: 90vw;
+  }
+}

@@ -10,7 +10,6 @@ const pool = mysql.createPool({
 })
 
 let usersdb = {};
-
 usersdb.all = () => {
     return new Promise((resolve, reject) => {
         pool.query('SELECT * FROM users', (err, results) => {
@@ -21,7 +20,6 @@ usersdb.all = () => {
         })
     })
 }
-
 usersdb.one = (id) => {
     return new Promise((resolve, reject) => {
         pool.query('SELECT * FROM users WHERE id = ?', [id], (err, results) => {
@@ -32,7 +30,6 @@ usersdb.one = (id) => {
         })
     })
 }
-
 usersdb.oneByMail = (email) => {
     return new Promise((resolve, reject) => {
         pool.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
@@ -43,7 +40,6 @@ usersdb.oneByMail = (email) => {
         })
     })
 }
-
 usersdb.insert = (email, password, name) => {
     return new Promise((resolve, reject) => {
         pool.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
@@ -58,8 +54,7 @@ usersdb.insert = (email, password, name) => {
                 })
             }
         })
-
     })
 }
 
-module.exports = usersdb;
+module.exports = { usersdb };

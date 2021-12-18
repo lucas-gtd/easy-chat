@@ -1,22 +1,13 @@
-<div class="row m-5">
-    <h1 class="col-sm-4 m-auto display-6">Conversations</h1>
-    <h1 class="col-sm-4 m-auto display-6">Chat</h1>
+<h1 class="signupTitle">Chat</h1>
+<div class="chatContainer">
+    <ul class="messagesContainer">
+        <li *ngFor="let chat of chats" [ngClass]="{ourMessage: isOurMessage(chat), message: !isOurMessage(chat)}">
+            {{chat.content}} </li>
+    </ul>
 </div>
-<div class="row">
-    <div class="col-sm-4 m-auto">
-        <div class="list-group">
-            <button *ngFor="let userConv of users" (click)="openChat(userConv)" type="button"
-                class="list-group-item list-group-item-action" style="display: flex;">
-                <p *ngFor="let user of userConv"> {{user.name}} - </p>
-            </button>
-        </div>
-    </div>
-    <div *ngIf="showChat == true" class="col-sm-4 m-auto">
-        <app-chat [convo]="convo"></app-chat>
-    </div>
-    <div *ngIf="showChat == false" class="col-sm-4 m-auto">
-        <p class="lead">
-            No chat selected
-        </p>
-    </div>
+<div class="chatInputGroup">
+    <input type="text" class="chatInput" id="inputChat" [(ngModel)]="typedChat" name="chatInputSend" />
+    <button class="chatInputButton">SEND</button>
 </div>
+
+<button class="leaveButton" (click)="leaveChat()">Leave Chat</button>

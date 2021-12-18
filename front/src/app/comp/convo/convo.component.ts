@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Chat } from 'src/app/models/chat';
 import { Convo } from 'src/app/models/convo';
 import { User } from 'src/app/models/user';
@@ -11,42 +12,27 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./convo.component.css'],
 })
 export class ConvoComponent implements OnInit {
-  // conversations list
-  users: User[][] = [
-    [new User('lae20100@gmail.com', '123', 'Laetitia')],
-    [new User('rachidLebouk@gmail.com', '123', 'Rachid')],
-    [
-      new User('rachidLebouk@gmail.com', '123', 'Rachid'),
-      new User('tjuXenxai@gmail.com', '123', 'Tju'),
-    ],
-  ];
+  chats: Chat[] = [];
 
-  // chat showing on conversation click
-  showChat: boolean = false;
+  typedChat: string = '';
 
-  // conversation object to send in the chat compoenent
-  convo: Convo;
+  constructor(private userService: UserService, private router: Router) {}
 
-  constructor(
-    private userService: UserService,
-    private convoService: ConvoService
-  ) {}
+  leaveChat(): void {
+    this.userService.currentUser = null;
+    this.router.navigate(['/signin']);
+  }
 
-  // initialise convo object on conversation click
-  openChat(users: User[]) {
-    // init the convo object
-    this.convo = new Convo(users, [
-      new Chat(users[0], 'salut boT, ca va bien ?'),
-      new Chat(this.userService.currentUser, 'oui ca va bien et toi ?'),
-      new Chat(users[0], 'ça va'),
-    ]);
-    // show the component
-    this.showChat = true;
+  isOurMessage(chat: Chat): boolean {
+    if (chat.sender === this.userService.currentUser) {
+      return true;
+    }
   }
 
   ngOnInit(): void {
-    this.convo.users = this.convoService.initConvoUsersInfos(
-      this.userService.currentUser
-    );
+    this.chats = [
+      new Chat(new User('blabla', 'blabla', 'laetitia'), 'salut'),
+      new Chat(this.userService.currentUser, 'salut, ça va ?'),
+    ];
   }
 }

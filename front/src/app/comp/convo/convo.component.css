@@ -1,0 +1,133 @@
+@keyframes slidein {
+  from {
+    transform: rotateY(90deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+.signupTitle {
+  width: 100%;
+  text-align: center;
+  font-family: "Roboto";
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  color: #262626;
+  animation: 1s slidein;
+}
+.chatContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 2rem;
+  border-top-left-radius: 2rem;
+  margin: auto;
+  width: 50vw;
+  height: 50vh;
+  background-color: white;
+  animation: 1s slidein;
+  box-shadow: inset 0px 0px 10px 10px rgba(0, 0, 0, 0.2);
+  animation: 1.3s slidein;
+}
+.chatInputGroup {
+  margin: auto;
+  width: 50vw;
+  height: 2.5rem;
+  animation: 1.3s slidein;
+}
+.chatInput {
+  border-bottom-left-radius: 2rem;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #262626;
+  width: 90%;
+  height: 100%;
+  padding-left: 2rem;
+}
+.chatInputButton {
+  border-bottom-right-radius: 2rem;
+  margin: 0;
+  padding: 0;
+  width: 10%;
+  height: 100%;
+  border: 0;
+  background-color: #262626;
+  color: white;
+  font-family: "Roboto";
+  box-sizing: border-box;
+}
+.leaveButton {
+  border: none;
+  margin-top: 2rem;
+  height: 2.5rem;
+  width: 50vw;
+  border-radius: 1rem;
+  background-color: #262626;
+  color: rgb(240, 240, 240);
+  animation: 1.6s slidein;
+}
+
+.messagesContainer {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  list-style: none;
+  width: 90%;
+  padding-right: 10%;
+  height: 90%;
+}
+.ourMessage {
+  align-self: flex-end;
+  width: 55%;
+  text-align: justify;
+  min-height: 2rem;
+  background-color: white;
+  border: #262626 solid 2px;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  color: #262626;
+  margin: 0.25rem;
+}
+.message {
+  align-self: flex-start;
+  width: 55%;
+  text-align: justify;
+  min-height: 2rem;
+  background-color: #262626;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  color: white;
+  margin: 0.25rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .chatContainer,
+  .chatInputGroup,
+  .leaveButton {
+    width: 75vw;
+  }
+}
+@media screen and (max-width: 425px) {
+  .chatContainer,
+  .chatInputGroup,
+  .leaveButton {
+    width: 100vw;
+    border-radius: 0;
+  }
+  .chatInput,
+  .chatInputButton {
+    border-radius: 0;
+  }
+  .chatInput {
+    width: 80%;
+  }
+  .chatInputButton {
+    width: 20%;
+  }
+  .chatContainer {
+    height: 75vh;
+  }
+  .signupTitle {
+    margin-top: 0;
+  }
+}
