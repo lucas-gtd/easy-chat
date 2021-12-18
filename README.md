@@ -35,3 +35,9 @@
         host: 'localhost',
         port: '3306'
     })</code></pre>
+
+## Lancement du projet
+
+- ouvrez deux terminaux
+- - <code>cd back</code> puis <code>npm run dev</code>
+- - <code>cd front</code> puis <code>ng s -o</code>
