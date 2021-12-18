@@ -28,10 +28,10 @@
 - - ouvrez le fichier back/server/db/index.js
 - - modifiez la ligne "port: '3306'" avec votre port de serveur MySQL
 - - <pre><code>const pool = mysql.createPool({
-    connectionLimit: 10,
-    password: 'EASYch4t!P4ss#',
-    user: 'easyChatUser',
-    database: 'easy_chat_db',
-    host: 'localhost',
-    port: '3306'
+        connectionLimit: 10,
+        password: 'EASYch4t!P4ss#',
+        user: 'easyChatUser',
+        database: 'easy_chat_db',
+        host: 'localhost',
+        port: '3306'
     })</code></pre>
