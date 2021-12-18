@@ -87,6 +87,7 @@
   padding: 0.3rem;
   color: #262626;
   margin: 0.25rem;
+  margin-bottom: 0.75rem;
 }
 .message {
   align-self: flex-start;
@@ -98,6 +99,7 @@
   padding: 0.3rem;
   color: white;
   margin: 0.25rem;
+  margin-bottom: 0.75rem;
 }
 
 @media screen and (max-width: 1024px) {

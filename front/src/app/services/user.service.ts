@@ -21,7 +21,7 @@ export class UserService {
   connectUser(email: string, password: string): Observable<any> {
     return this.http
       .post(
-        'http://localhost:8080/api/users/login',
+        'http://192.168.1.30:8080/api/users/login',
         {
           email: email,
           password: password,
@@ -38,7 +38,7 @@ export class UserService {
   ): Observable<any> {
     return this.http
       .post(
-        'http://localhost:8080/api/users/create',
+        'http://192.168.1.30:8080/api/users/create',
         {
           email: email,
           password: password,

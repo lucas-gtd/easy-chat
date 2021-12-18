@@ -1,53 +1,29 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Convo } from '../models/convo';
-import { User } from '../models/user';
+import { Socket } from 'ngx-socket-io';
+import { Chat } from '../models/chat';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConvoService {
-  allConvo: Convo[] = [];
+  // currentDocument = this.socket.fromEvent<Chat>('document');
+  documents = this.socket.fromEvent<Chat[]>('documents');
 
-  optionRequete = {
-    headers: new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-    }),
-  };
+  constructor(private socket: Socket) {}
 
-  constructor(private http: HttpClient) {}
-
-  initConvos(email: string): Observable<any> {
-    return this.http
-      .post(
-        'http://localhost:8080/api/convos/',
-        {
-          email: email,
-        },
-        this.optionRequete
-      )
-      .pipe();
+  newDocument(chat: Chat) {
+    this.socket.emit('addDoc', chat);
   }
 
-  initUsersInfos(id: number): Observable<any> {
-    return this.http
-      .get('http://localhost:8080/api/users/' + id, this.optionRequete)
-      .pipe();
-  }
+  docId() {
+    let text = '';
+    const possible =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-  initConvoUsersInfos(currentUser: User): any {
-    let users: User[] = [];
-    this.initConvos(currentUser.email).subscribe((res) => {
-      res.forEach((convo) => {
-        convo.id_users.forEach((idUser) => {
-          this.initUsersInfos(idUser.id_user).subscribe((userRes) =>
-            users.push(new User(userRes.email, userRes.password, userRes.name))
-          );
-        });
-        return users;
-      });
-    });
+    for (let i = 0; i < 5; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    return text;
   }
 }

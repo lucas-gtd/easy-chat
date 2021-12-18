@@ -1,13 +1,15 @@
 <h1 class="signupTitle">Chat</h1>
 <div class="chatContainer">
-    <ul class="messagesContainer">
+    <ul #chatScroll class="messagesContainer">
         <li *ngFor="let chat of chats" [ngClass]="{ourMessage: isOurMessage(chat), message: !isOurMessage(chat)}">
-            {{chat.content}} </li>
+            <span *ngIf="!isOurMessage(chat)">{{chat.sender.name}} ▶️ </span> {{chat.content}}
+        </li>
     </ul>
 </div>
-<div class="chatInputGroup">
+
+<form (ngSubmit)="newDoc()" #form="ngForm" class="chatInputGroup">
     <input type="text" class="chatInput" id="inputChat" [(ngModel)]="typedChat" name="chatInputSend" />
-    <button class="chatInputButton">SEND</button>
-</div>
+    <button type="submit" class="chatInputButton">SEND</button>
+</form>
 
 <button class="leaveButton" (click)="leaveChat()">Leave Chat</button>
